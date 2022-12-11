@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+
+
+{% block content  %}
+
+
+<form class="form-inline my-2 my-lg-0" method="GET">
+    
+    <input class="form-control mr-sm-2" name="buscar" type="buscar" placeholder="buscar" aria-label="buscar">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+   
+    <div class="row">
+        <div class="col-9">
+            <div class="row">
+                <!--<img src="https://www.lolhentai.net/upload/2016/09/24/20160924065015-64231cc0.gif" alt=""> -->
+                {% for article in articles %}
+                    {% if article.image != 'null' and article.image.url|length >= 1 %}
+                    <div class="col-md-3 col-sm-12 col-lg-4">
+                        <div class="gallery-card" style="width: 100%">
+                            <a href="{{article.image.url}}" data-lightbox="roadtrip"><img src="{{article.image.url}}" style="width:100%;" class="card-img-top"></a>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+
+                
+            </div>
+        </div>
+    </div>
+    
+    <br>
+
+    
+
+    {% include 'bases/pagination.html' %}
+
+      
+
+
+
+
+{% endblock %}
+

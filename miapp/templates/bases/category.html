@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+
+{% include 'bases/pagina.html' with articles=category.article_set.all %} 
+          
+
+
+{% endblock %}

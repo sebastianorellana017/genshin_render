@@ -1,0 +1,69 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand" href="#">
+        <img src="{% static 'base/img/django2.png' %}" width="50" height="50" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a  class="nav-link dropdown-toggle active" data-toggle="dropdown" data-target="desplegable" href="/pagina">
+                Categorias XXX
+            </a>
+            <div class="dropdown-menu">
+                {% for category in categories %}
+  
+                <a class="dropdown-item" href="{% url 'category' category.0 %}">{{category.1}}</a>
+  
+                {% endfor %}
+                
+            </div>  
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'nopor' %}">Genshin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'miapp:api' %}">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'miapp:api2' %}">Sismos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contacto</a>
+        </li>
+
+        
+        <div class="topbar-divider d-none d-sm-block"></div>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'userpage' %}">Userpage</a>
+        </li>
+        {% endif %}
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+            @ {{user.username}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Perfil</a>
+            
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Salir</a>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0" method="get">
+        <input class="form-control mr-sm-2" name="buscar" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
