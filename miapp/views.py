@@ -46,7 +46,7 @@ def registro(request):
 
     return render(request, 'bases/registro.html', data)
 
-@login_required(login_url='miapp:login')
+#@login_required(login_url='miapp:login')
 def pagina(request):
 
     articles = Article.objects.all()
